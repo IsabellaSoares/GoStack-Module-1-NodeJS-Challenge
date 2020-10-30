@@ -45,7 +45,7 @@ app.put("/repositories/:id", (request, response) => {
 
   const { title, url, techs } = request.body
 
-  const repository = { id, title, url, techs }
+  const repository = { id, title, url, techs, likes: repositories[repositoryIndex].likes }
 
   repositories[repositoryIndex] = repository
 

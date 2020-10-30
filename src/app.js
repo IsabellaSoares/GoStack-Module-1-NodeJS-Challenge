@@ -10,19 +10,8 @@ app.use(cors());
 
 const repositories = [];
 
-const validateProjectId = (request, response, next) => {
-
-  const { id } = request.params
-
-  if (!isUuid(id)) {
-    return response.status(400).json({ error: 'Invalid project ID.' })
-  }
-
-  return next()
-}
-
 app.get("/repositories", (request, response) => {
-  // TODO
+  return response.json(repositories)
 });
 
 app.post("/repositories", (request, response) => {
@@ -31,7 +20,7 @@ app.post("/repositories", (request, response) => {
 
   repositories.push(repository)
 
-  return response.json(repository)
+  return response.status(201).json(repository)
 });
 
 app.put("/repositories/:id", (request, response) => {
